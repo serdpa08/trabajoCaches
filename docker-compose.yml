@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  miservicio_php:
+    build: docker-images/php-apache
+    # Nombre arbitrario:
+    image: mi-php:7-apache
+    volumes:
+      # Montamos nuestra web desde fuera en el directorio web del contenedor
+      - ./miweb/:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - mired
+
+
+networks:
+  mired:
